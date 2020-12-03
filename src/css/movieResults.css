@@ -1,0 +1,37 @@
+.movie-results {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -15px;
+  /* margin: 20px; */
+}
+
+.movie-results .single-movie {
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  min-width: 250px;
+  /* padding: 15px; */
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.movie-results .single-movie img {
+  display: block;
+  width: 100%;
+}
+
+.movie-results .single-movie h3 {
+  background: gray;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px;
+
+  flex: 1 1 100%;
+  transition: 0.5s ease-out;
+}
+
+.movie-results .single-movie:hover {
+  background: white;
+  color: gray;
+}

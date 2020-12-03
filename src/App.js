@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Search from './components/Search'
+import MovieResults from './components/MovieResults'
+
 import axios from 'axios'
 
 function App() {
@@ -21,12 +23,16 @@ function App() {
     })
   }
 
+  // handleSubmit
   async function handleEnter(e) {
     if (e.key === 'Enter') {
-
       // Returns a nested object, we'll find search results in []data.data.search
       let data = await axios(`${apiURL}&s=${state.movieInput}`)
-      console.log(data)
+      let movieResults = data.data.Search
+
+      setState((prevState) => {
+        return { ...prevState, movieResults: movieResults }
+      })
     }
   }
 
@@ -38,7 +44,8 @@ function App() {
 
       <main>
         {/* Search Component */}
-        <Search handleInput={handleInput} handleEnter={handleEnter}/>
+        <Search handleInput={handleInput} handleEnter={handleEnter} />
+        <MovieResults movieResults={state.movieResults} />
       </main>
     </div>
   )
