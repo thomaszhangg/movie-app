@@ -6,7 +6,7 @@ function MovieResults({ movieResults }) {
   return (
     <section className='movie-results'>
       {movieResults.map((singleMovie) => (
-        <SingleMovie singleMovie={singleMovie} key={movieResults.imdbID} />
+        <SingleMovie singleMovie={singleMovie} key={singleMovie.imdbID} />
       ))}
     </section>
   )

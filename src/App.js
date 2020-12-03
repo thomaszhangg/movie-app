@@ -27,13 +27,30 @@ function App() {
   async function handleEnter(e) {
     if (e.key === 'Enter') {
       // Returns a nested object, we'll find search results in []data.data.search
-      let data = await axios(`${apiURL}&s=${state.movieInput}`)
+      let data = await axios.get(`${apiURL}&s=${state.movieInput}`)
       let movieResults = data.data.Search
 
       setState((prevState) => {
         return { ...prevState, movieResults: movieResults }
       })
     }
+  }
+
+  async function openPopup(id) {
+    // Get information for this single movie
+    let singleMovie = await axios.get(`${apiURL}&i=${id}`)
+
+    setState((prevState) => {
+      return { ...prevState, selectedMovie: singleMovie }
+    })
+
+    console.log('SINGLE MOVIE', singleMovie)
+  }
+
+  const closePopup = () => {
+    setState((prevState) => {
+      return {...prevState, selectedMovie: {}}
+    })
   }
 
   return (
